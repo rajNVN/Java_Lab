@@ -1,0 +1,51 @@
+import java.io.*;
+import java.util.Scanner;
+
+class Marks {
+    int no;
+    double mark[];
+}
+class Subject extends Marks {
+    String subname[];
+}
+
+class Student extends Subject {
+    String name;
+
+    Student(int n) {
+        no = n;
+        mark = new double[n];
+        subname = new String[n];
+    }
+
+    double total() {
+        double total_marks = 0;
+        for (int i = 0; i < no; i++)
+            total_marks += mark[i];
+        return total_marks;
+    }
+}
+public class Multiple {
+    public static void main(String[] args) throws IOException {
+        Scanner scan = new Scanner(System.in);
+        BufferedReader in=new BufferedReader(new InputStreamReader(System.in));
+        System.out.print("Enter the number of students:");
+        int n = scan.nextInt();
+        Student std[] = new Student[n];
+        for (int i = 0; i < n; i++) {
+            System.out.print("Name : ");
+            String name = in.readLine();
+            System.out.print("Number of Subjects: ");
+            int a = scan.nextInt();
+            std[i] = new Student(a);
+            std[i].name = name;
+            System.out.println("Enter subject name followed by marks");
+            for (int j = 0; j < a; j++) {
+                std[i].subname[j] = scan.next();
+                std[i].mark[j] = scan.nextInt();
+            }
+        }
+        for (int i = 0; i < n; i++)
+            System.out.println(std[i].name + " " + std[i].total());
+    }
+}

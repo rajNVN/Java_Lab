@@ -1,0 +1,22 @@
+import java.awt.*;
+import java.applet.Applet;
+
+public class Appl extends Applet
+{
+    private int p1,p2;
+    public void init()
+    {
+        p1 = Integer.parseInt(getParameter("par1"));
+        p2 = Integer.parseInt(getParameter("par2"));
+    }
+    public void paint(Graphics g)
+    {
+        g.setFont(new Font("Arial",Font.BOLD,12));
+        g.setColor(Color.RED);
+        g.drawString("parameters are "+p1+" and "+p2, 10, 30);
+        g.setFont(new Font("Times New Roman",Font.BOLD,18));
+        g.setColor(Color.BLUE);
+        g.drawString("Code Base :"+getCodeBase().toString(),10,60);
+        g.drawString("Doucument Base : "+getDocumentBase().toString(), 10, 90);
+    }
+}

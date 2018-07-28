@@ -1,0 +1,53 @@
+import java.applet.Applet;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class Appl2 extends Applet {
+
+    public void init() {
+        TextField in = new TextField(10);
+        Label l1 = new Label("Enter N    ");
+        Label l2 = new Label("N! is      ");
+        Button calc = new Button("Calculate");
+        Button clear=new Button("Clear");
+        TextField out = new TextField(100);
+        out.setEditable(false);
+        this.add(l1);
+        this.add(in);
+        this.add(l2);
+        this.add(out);
+        this.add(calc);
+        this.add(clear);
+        Fact cf = new Fact(in, out);
+        calc.addActionListener(cf);
+        clear.addActionListener(cf);
+    }
+}
+class Fact implements ActionListener
+{
+    private TextField in;
+    private TextField out;
+
+    Fact(TextField in ,TextField out)
+    {
+        this.in = in;
+        this.out = out;
+    }
+
+    public void actionPerformed(ActionEvent ae)
+    {
+        if(ae.getActionCommand().equals("Calculate")) {
+            int n = Integer.parseInt(in.getText());
+            int fact = 1;
+            for (int i = 1; i <= n; i++)
+                fact = fact * i;
+            out.setText("" + fact);
+        }
+        else
+        {
+            in.setText("");
+            out.setText("");
+        }
+    }
+}

@@ -1,0 +1,77 @@
+import java.io.*;
+import java.util.Scanner;
+
+public class Excep {
+    public static void main(String[] nvn)
+    {
+        Scanner scan=new Scanner(System.in);
+        BufferedReader bf=new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Exception:\n1.IOException\t2.Arithmetic related Exceptions\t3.ArrayOutOfBoundsException\t4.StringIndexOutOfBoundsException");
+        boolean ch=true;
+        while(true)
+        {
+            System.out.print("Enter your choice for Exception:");
+            try {
+                int c = scan.nextInt();
+                switch (c) {
+                    case 1:
+                        String str;
+                        System.out.print("Enter file path:");
+                        str=scan.next();
+                        File file=new File(str);
+                        new FileInputStream(file);
+                        System.out.println("Fle is exist no Exceptions triggered!");
+                        break;
+                    case 2:
+                        System.out.print("A: ");
+                        int a=Integer.parseInt(bf.readLine());
+                        System.out.print("B: ");
+                        int b=Integer.parseInt(bf.readLine());
+                        int d=a/b;
+                        System.out.println("C="+d+"\nAll went right no Exceptions triggered!");
+                        break;
+                    case 3:
+                        System.out.print("enter size of array:");
+                        int n=scan.nextInt();
+                        int arr[]=new int[n];
+                        for(int i=0;i<n;i++)
+                            arr[i]=scan.nextInt();
+                        System.out.print("Enter the index to retrieve element:");
+                        int i=scan.nextInt();
+                        System.out.println("Array["+(i-1)+"]="+arr[i-1]);
+                        System.out.println("All went right no Exceptions triggered!");
+                        break;
+                    case 4:
+                        System.out.print("Enter a sentence:");
+                        str=bf.readLine();
+                        System.out.print("Enter the index to display character:");
+                        System.out.println(str.charAt(scan.nextInt()));
+                        System.out.println("All went right no Exceptions triggered!");
+                        break;
+                    default:
+                        System.exit(0);
+                }
+            }
+            catch(IOException e)
+            {
+                System.out.println("IOException triggered!");
+            }
+            catch(NumberFormatException e)
+            {
+                System.out.println("NumberFormatException triggered!");
+            }
+            catch(ArithmeticException e)
+            {
+                System.out.println("ArithmeticException triggered!");
+            }
+            catch(ArrayIndexOutOfBoundsException e)
+            {
+                System.out.println("ArrayIndexOutOfBoundsException triggered!");
+            }
+            catch(StringIndexOutOfBoundsException e)
+            {
+                System.out.println("StringIndexOutOfBoundsException triggered!");
+            }
+        }
+    }
+}

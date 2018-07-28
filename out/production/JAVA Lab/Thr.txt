@@ -1,0 +1,34 @@
+class ThrA extends Thread
+{
+    ThrA(String s)
+    {
+        super(s);
+        System.out.println(this+" ("+s+") started!");
+    }
+    public void run()
+    {
+        for(int i=0;i<10;i++)
+        {
+            System.out.println(this+" at count ; "+i);
+            try
+            {
+                Thread.sleep(100);
+            }
+            catch(InterruptedException e)
+            {
+                System.out.print("Excep-->");
+                e.printStackTrace();
+            }
+        }
+    }
+}
+
+public class Thr
+{
+    public static void main(String nvn[])
+    {
+        new ThrA("A").start();
+        new ThrA("B").start();
+        new ThrA("C").start();
+    }
+}

@@ -1,0 +1,48 @@
+import java.util.Scanner;
+
+public class Stack {
+    public static void main(String nvn[])
+    {
+        Scanner scan=new Scanner(System.in);
+        int stak[],top=-1;
+        System.out.print("Enter size of stack:");
+        int n=scan.nextInt();
+        stak=new int[n];
+        System.out.println("Stack operation:\n1.Push\t2.Pop\t3.Display");
+        while(true)
+        {
+            System.out.print("Enter your choice:");
+            int c=scan.nextInt();
+            switch(c)
+            {
+                case 1:
+                    if(top==n-1)
+                        System.out.println("Stack Overflow!");
+                    else
+                    {
+                        System.out.print("Enter element: ");
+                        stak[++top]=scan.nextInt();
+                    }
+                    break;
+                case 2:
+                    if(top==-1)
+                        System.out.println("Stack Underflow!");
+                    else
+                        System.out.println("Popped element: "+stak[top--]);
+                    break;
+                case 3:
+                    if(top==-1)
+                        System.out.println("Stack Underflow!");
+                    else
+                    {
+                        System.out.println("stack containes:");
+                        for(int i:stak)
+                            System.out.println(i+"\t");
+                        System.out.println();
+                    }
+                    break;
+                default:System.exit(0);
+            }
+        }
+    }
+}
